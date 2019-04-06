@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #define max 30
-void main()
+int main()
 {
 int i,j,n,t,p[max],bt[max],wt[max],tat[max];
 //p = process id
@@ -9,19 +9,25 @@ int i,j,n,t,p[max],bt[max],wt[max],tat[max];
 //wt = waiting time
 //tat = turnaround time
 float awt = 0,atat = 0;
+FILE *fp1;
+for(i=0;i<50;i++)   //initialize array with 0
+       { bt[i]=0;}
+    i=0;        //clean up and initialize LCV
+    if ((fp1=fopen("CPU.txt","r"))==NULL)
+    {
+    printf("CPU.txt failed to open\n");
+    return 1;
+    }
+    else
+        while((fscanf(fp1,"%d",&bt[i]))!=EOF) //scanf and check EOF
+        {   
+            p[i] = i;
+            printf("process id %d with burst time %d\n",p[i],bt[i]);
+            i++;
+        }
+    
 
-printf("ENTER THE NUMBER OF PROCESSES : ");
-scanf("%d",&n);
-printf("ENTER THE PROCESS NUMBER : ");
-for(i = 0;i<n;i++)
-{
- scanf("%d",&p[i]);
-}	
-printf("ENTER THE BURST TIME");
-for(i = 0;i<n;i++)
-{
- scanf("%d",&bt[i]);
-}
+
 //applying bubble sort to burst time(bt)
 for(i=0;i<n;i++)
  {
