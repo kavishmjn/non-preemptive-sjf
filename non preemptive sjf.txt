@@ -21,6 +21,11 @@ for(i=0;i<50;i++)   //initialize array with 0
     else
         while((fscanf(fp1,"%d",&bt[i]))!=EOF) //scanf and check EOF
         {   
+            if(bt[i]<0)// checking whether burst time is not negative
+            {
+              printf("BURST TIME CAN'T BE LESS THAN ZERO");
+              return 0; //exiting the code
+            }
             p[i] = i;
             printf("process id %d with burst time %d\n",p[i],bt[i]);
             i++;
